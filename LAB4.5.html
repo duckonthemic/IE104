@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #1e1e1e;
+        }
+
+        .login-container {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+            position: relative;
+        }
+
+        .login-container h2 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+
+        .login-input {
+            display: flex;
+            align-items: center;
+            background-color: #444;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            padding: 5px;
+        }
+
+        .login-input input {
+            border: none;
+            background: none;
+            color: #fff;
+            padding: 10px;
+            outline: none;
+            flex: 1;
+        }
+
+        .login-input i {
+            color: #bbb;
+            padding: 0 10px;
+        }
+
+        .login-button {
+            background-color: #e74c3c;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .toggle-password {
+            color: #bbb;
+            cursor: pointer;
+            padding: 0 10px;
+        }
+
+        .toggle-password:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2><i class="fas fa-sign-in-alt"></i> Login</h2>
+        
+        <div class="login-input">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Username" id="username">
+        </div>
+
+        <div class="login-input">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" id="password">
+            <i class="fas fa-eye toggle-password" onclick="togglePassword()"></i>
+        </div>
+        
+        <button class="login-button" onclick="login()">Login</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            if (type === 'text') {
+                alert("Bạn muốn hiện mật khẩu");
+            }
+        }
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            alert(`Tên đăng nhập: ${username}\nMật khẩu: ${password}`);
+        }
+    </script>
+
+</body>
+</html>

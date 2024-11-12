@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Liên Hệ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .left-section {
+            padding: 30px 20px;
+            width: 40%; /* Chỉnh lại độ rộng để giống với mẫu */
+            background-color: #f4f4f9;
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        .left-section h2 {
+            font-size: 24px;
+            color: #E53935;
+            margin: 0;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #E53935;
+            display: inline-block;
+        }
+
+        .left-section p {
+            margin: 15px 0;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .left-section p i {
+            margin-right: 8px;
+            color: #888;
+        }
+
+        .right-section {
+            padding: 30px 20px;
+            width: 60%; /* Đảm bảo phần form bên phải chiếm khoảng 60% */
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        .right-section h3 {
+            color: #6A0DAD;
+            font-size: 18px;
+            margin: 0 0 15px 0;
+            font-weight: bold;
+        }
+
+        .right-section input, .right-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .right-section textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        .submit-button {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 10px;
+        }
+
+        .submit-button button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ cho nút */
+        }
+
+        .submit-button button:hover {
+            background-color: #218838;
+        }
+
+        .submit-button button::before {
+            content: '➤';
+            margin-right: 8px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Phần Thông tin liên hệ -->
+        <div class="left-section">
+            <h2>LIÊN HỆ</h2>
+            <p><i class="fas fa-map-marker-alt"></i>Kp. 6, P. Linh Trung, Tp. Thủ Đức, Tp. HCM</p>
+            <p><i class="fas fa-envelope"></i>info@uit.edu.vn</p>
+            <p><i class="fas fa-phone"></i>+84 28 372 52002</p>
+        </div>
+
+        <!-- Phần form liên hệ -->
+        <div class="right-section">
+            <h3>Hãy liên lạc với chúng tôi bất cứ khi nào!!!</h3>
+            <input id="tenLienHe" type="text" placeholder="Họ và tên">
+            <input id="emailLienHe" type="email" placeholder="Địa chỉ e-mail">
+            <input id="tieuDeLienHe" type="text" placeholder="Tiêu đề bài viết">
+            <textarea id="noiDungLienHe" placeholder="Nội dung cần gửi"></textarea>
+            <div class="submit-button">
+                <button onclick="guiLienHe()">Gửi Tin Nhắn</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function guiLienHe() {
+            const ten = document.getElementById('tenLienHe').value;
+            const email = document.getElementById('emailLienHe').value;
+            const tieuDe = document.getElementById('tieuDeLienHe').value;
+            const noiDung = document.getElementById('noiDungLienHe').value;
+
+            const thongBao = 
+                `Họ và tên: ${ten}\n` +
+                `E-mail: ${email}\n` +
+                `Tiêu đề: ${tieuDe}\n` +
+                `Nội dung góp ý:\n${noiDung}`;
+
+            alert(thongBao);
+        }
+    </script>
+
+    <!-- Link tới Font Awesome để hiển thị các icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</body>
+</html>

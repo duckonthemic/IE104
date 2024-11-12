@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Giải Phương Trình Bậc I</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 20px; }
+        h2 { font-size: 24px; }
+        input[type="number"] { padding: 8px; margin: 10px; width: 200px; }
+        button { padding: 8px 20px; cursor: pointer; }
+        .result { font-weight: bold; color: red; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h2>GIẢI PHƯƠNG TRÌNH BẬC I</h2>
+    <input id="heSoA" type="number" placeholder="Hệ số a"><br>
+    <input id="heSoB" type="number" placeholder="Hệ số b"><br>
+    <button onclick="giaiPhuongTrinh()">Giải Phương Trình</button>
+    <p id="ketQua" class="result">KẾT QUẢ</p>
+
+    <script>
+        function giaiPhuongTrinh() {
+            const a = parseFloat(document.getElementById('heSoA').value);
+            const b = parseFloat(document.getElementById('heSoB').value);
+            let result = "Không có nghiệm";
+            if (a !== 0) {
+                result = "Nghiệm x = " + (-b / a).toFixed(2);
+            } else if (b === 0) {
+                result = "Phương trình vô số nghiệm";
+            }
+            document.getElementById('ketQua').innerText = result;
+        }
+    </script>
+</body>
+</html>

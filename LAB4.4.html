@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính Chỉ Số BMI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+            margin: 0;
+        }
+
+        .container {
+            background: linear-gradient(to right, #7dbea2, #2f4f7f);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 320px;
+            text-align: center;
+        }
+
+        .container h2 {
+            color: #ffffff;
+            background-color: #3366cc;
+            padding: 10px;
+            margin: 0;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            font-size: 20px;
+        }
+
+        .container input, .container select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0099ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .container button:hover {
+            background-color: #007acc;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-size: 16px;
+        }
+
+        .result .bmi-value {
+            color: blue;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .result .bmi-category {
+            color: red;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .result .recommendation {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>TÍNH CHỈ SỐ BMI</h2>
+        <input type="number" id="weight" placeholder="Nhập cân nặng? (kg)">
+        <input type="number" id="height" placeholder="Nhập chiều cao? (m)">
+        <select id="ageCategory">
+            <option value="">Chọn loại tuổi?</option>
+            <option value="middle-aged">Trung niên</option>
+            <option value="elderly">Già, lớn tuổi</option>
+        </select>
+        <button onclick="calculateBMI()">Tính BMI</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const ageCategory = document.getElementById('ageCategory').value;
+            const resultDiv = document.getElementById('result');
+            
+            if (isNaN(weight) || isNaN(height) || !ageCategory) {
+                resultDiv.innerHTML = "<p class='bmi-category' style='color:red;'>Vui lòng nhập đầy đủ thông tin!</p>";
+                return;
+            }
+
+            const bmi = weight / (height * height);
+            let category = "";
+            let recommendation = "";
+
+            if (bmi < 18.5) {
+                category = "Dưới chuẩn";
+            } else if (bmi < 25) {
+                category = "Bình thường";
+            } else if (bmi < 30) {
+                category = "Thừa cân";
+            } else if (bmi < 35) {
+                category = "Béo phì cấp độ I";
+            } else if (bmi < 40) {
+                category = "Béo phì cấp độ II";
+            } else {
+                category = "Béo phì cấp độ III";
+            }
+
+            if (bmi >= 30) {
+                if (ageCategory === "middle-aged") {
+                    recommendation = "Tập thể dục thường xuyên";
+                } else if (ageCategory === "elderly") {
+                    recommendation = "Hạn chế ăn mỡ động vật";
+                }
+            } else if (bmi >= 25 && bmi < 30 && ageCategory === "middle-aged") {
+                recommendation = "Khám định kỳ";
+            }
+
+            resultDiv.innerHTML = `
+                <p>KẾT QUẢ</p>
+                <p class="bmi-value">${bmi.toFixed(2)}</p>
+                <p class="bmi-category">${category}</p>
+                <p class="recommendation">${recommendation}</p>
+            `;
+        }
+    </script>
+
+</body>
+</html>
